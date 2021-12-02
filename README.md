@@ -3,7 +3,7 @@
 ## Members
 - Pacleb, Nikko Adrian (Leader)
 - Jezreel A. Batara
-- Member 2 (Edit)
+- Fermin, Raul Jr. N.
 - Member 3 (Edit)
 - Member 4 (Edit)
 
