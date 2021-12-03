@@ -66,12 +66,59 @@ void SJN(){
     int burstTime[jobNumber];
     int index[getAlgoInput(jobNumber, arrivalTime, burstTime, NULL)];
 
-
-
-
-
     //@Show Data Table
     showTable(jobNumber, arrivalTime, burstTime, NULL);
+    
+    //-----------------SJN Edit Fermin, Ogwo (DRAFT)---------------------------
+    printf ("\n");
+    //additional variables
+    int totalTime=0;
+    int LBT=99999; //least burst time
+
+    //gets the total time
+    for(int a=0;a<jobNumber;++a){
+        totalTime+=burstTime[a];
+    }
+
+    //@show simulation
+    for(int a=0;a<=totalTime; ++a){
+        //variable for chosen next job
+        int NextJob;
+        //choosing next job to be printed
+        for (int b=0; b<jobNumber; b++){
+            if (arrivalTime[b]<=a && burstTime[b]<LBT){
+                NextJob=b;
+                LBT=burstTime[b];
+            }
+        }
+        //prints the job accordingly
+        printf ("J%d ", NextJob+1);
+        for (int c=0; c<burstTime[NextJob]-1; ++c){
+                printf ("-  ");
+            if (a>9 && a<100){
+            printf (" ");
+        }
+            if (a>100){
+               printf (" ");
+            }
+        }
+        //makes the counter start at the end of the present job
+        a+=burstTime[NextJob];
+        //prevents repetition of done jobs
+        arrivalTime[NextJob]=totalTime+1;
+        //resets LBT
+        LBT=99999;
+    }
+    printf ("\n");
+    //prints the time line
+    for (int a=0;a<=totalTime-1; ++a){
+        printf ("%d  ", a);
+
+    }
+    printf ("\n\n");
+
+    //-----------------------------------------------------
+
 }
 
 /**
